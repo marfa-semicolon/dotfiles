@@ -21,9 +21,17 @@
 alias logseq = logseq --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
 
 def --env use-venv [path?: string] {
+
+		
+
     let bin = ($path | default ".venv" | path join "bin")
-		print $bin
+		if not ($bin | path exists) {
+		        error make {
+		            msg: $"($bin): No such file or directory"
+		        }
+		    }
     $env.PATH = ($env.PATH | prepend $bin)
+		print $"($bin) is set in the PATH"
 }
 
 def man-toc [] {
