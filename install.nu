@@ -65,6 +65,8 @@
     man-db man-pages tldr
     # install LSP and formatter
     yamlfmt shfmt taplo-cli ty jedi-language-server python-lsp-server
+    # install superproductivity
+    superproductivity
 )
 
 # npm config
@@ -97,8 +99,6 @@ cd ..
     zprint-bin
     # install OCR program
     quicksnip-git
-    # install superproductivity
-    superproductivity-bin
     # install document utils
     onlyoffice-bin
     logseq-desktop-bin
