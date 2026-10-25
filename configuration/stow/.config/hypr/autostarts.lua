@@ -1,0 +1,13 @@
+-- See https://wiki.hypr.land/Configuring/Basics/Autostart/
+hl.on("hyprland.start", function ()
+  hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  hl.exec_cmd("bash ~/.config/hypr/auto_waybar_reload.sh")
+  hl.exec_cmd("hypridle")
+  hl.exec_cmd("neru launch")
+  hl.exec_cmd("hyprpaper")
+  hl.exec_cmd("hyprsunset")
+  hl.exec_cmd("fcitx5 -dr")
+  hl.exec_cmd("nu -c 'loop { notify-send (fortune ~/myquotes); sleep 60min; }'")
+  hl.exec_cmd("easyeffects --hide-window")
+  hl.exec_cmd("dotoold")
+end)
