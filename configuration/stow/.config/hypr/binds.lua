@@ -407,25 +407,36 @@ hl.bind(mainMod .. " + S", function ()
     local layouts = { "scrolling", "dwindle" }
     local workspace = hl.get_active_workspace()
     local next_layout = "dwindle"
+    local special = hl.get_active_special_workspace()
 
     if not workspace then
         return
     end
 
-    for i = 1, #layouts do
-        if layouts[i] == workspace.tiled_layout then
-            local next_layout_idx = (i % #layouts) + 1
-            next_layout = layouts[next_layout_idx] or "dwindle"
-            -- hl.notification.create({ text = "next layout: " .. next_layout, timeout = 2000, icon = "ok" })
-            break
+    if special == nil then
+        for i = 1, #layouts do
+            if layouts[i] == workspace.tiled_layout then
+                local next_layout_idx = (i % #layouts) + 1
+                next_layout = layouts[next_layout_idx] or "dwindle"
+                -- hl.notification.create({ text = "next layout: " .. next_layout, timeout = 2000, icon = "ok" })
+                break
+            end
+        end
+    else
+        for i = 1, #layouts do
+            if layouts[i] == special.tiled_layout then
+                local next_layout_idx = (i % #layouts) + 1
+                next_layout = layouts[next_layout_idx] or "dwindle"
+                -- hl.notification.create({ text = "next layout: " .. next_layout, timeout = 2000, icon = "ok" })
+                break
+            end
         end
     end
-
-    local special = hl.get_active_special_workspace()
 
     if special == nil then
         hl.workspace_rule({ workspace = workspace.name, layout = next_layout })
     else
+        hl.notification.create({ text = "in special", timeout = 1000 })
         hl.workspace_rule({ workspace = special.name, layout = next_layout })
     end
 end)
