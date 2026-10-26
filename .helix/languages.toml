@@ -1,0 +1,5 @@
+[[language]]
+name = "lua"
+workspace-lsp-roots = [
+  "configuration/stow/.config/hypr/"
+]
