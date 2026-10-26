@@ -436,7 +436,6 @@ hl.bind(mainMod .. " + S", function ()
     if special == nil then
         hl.workspace_rule({ workspace = workspace.name, layout = next_layout })
     else
-        hl.notification.create({ text = "in special", timeout = 1000 })
         hl.workspace_rule({ workspace = special.name, layout = next_layout })
     end
 end)
